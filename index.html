@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>家族旅遊手冊 · 台中兩天一夜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#0b968d;
+    --green-2:#3ec8bc;
+    --paper:#e7f6f2;
+    --card:#ffffff;
+    --brass:#fb7f52;
+    --brass-deep:#d9542f;
+    --brick:#e85d3f;
+    --ink:#124a49;
+    --ink-soft:#4f7c78;
+    --line:#cfe9e3;
+    --shadow:0 8px 24px rgba(11,120,110,.11);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Noto Sans TC",system-ui,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:620px;margin:0 auto;background:var(--paper);
+    min-height:100vh;box-shadow:0 0 60px rgba(0,0,0,.06);}
+  .serif{font-family:"Noto Serif TC",serif;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(120% 90% at 80% -10%, rgba(255,138,99,.32), transparent 55%),
+      linear-gradient(165deg,var(--green) 0%, var(--green-2) 100%);
+    color:#eafafa;
+    padding:56px 30px 40px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{content:"";position:absolute;inset:14px;border:1px solid rgba(255,138,99,.45);
+    border-radius:3px;pointer-events:none;}
+  .eyebrow{font-size:12px;letter-spacing:.42em;color:var(--brass);
+    text-transform:uppercase;font-weight:700;padding-left:.42em;}
+  .hero h1{font-family:"Noto Serif TC",serif;font-weight:900;
+    font-size:76px;line-height:.98;letter-spacing:.06em;margin:14px 0 6px;
+    color:#ffffff;text-shadow:0 2px 20px rgba(0,0,0,.18);}
+  .hero .sub{font-family:"Noto Serif TC",serif;font-size:19px;
+    color:#cdeeee;font-weight:500;letter-spacing:.08em;}
+  .hero .rule{width:46px;height:2px;background:var(--brass);margin:20px 0;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{background:rgba(255,255,255,.12);border:1px solid rgba(255,138,99,.5);
+    color:#eafafa;font-size:13px;padding:5px 12px;border-radius:20px;font-weight:500;}
+
+  /* ---------- STICKY NAV ---------- */
+  .nav{position:sticky;top:0;z-index:20;background:rgba(11,150,141,.96);
+    backdrop-filter:blur(6px);display:flex;gap:6px;padding:9px 16px;
+    border-bottom:1px solid rgba(255,138,99,.32);}
+  .nav a{flex:1;text-align:center;color:#dff2f1;text-decoration:none;
+    font-size:13.5px;font-weight:500;padding:7px 4px;border-radius:8px;
+    letter-spacing:.05em;transition:background .2s;}
+  .nav a:active{background:rgba(255,138,99,.3);}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:38px 24px 6px;}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:22px;}
+  .sec-head .num{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:15px;color:var(--brass-deep);letter-spacing:.1em;}
+  .sec-head h2{font-family:"Noto Serif TC",serif;font-size:26px;
+    font-weight:700;color:var(--green);letter-spacing:.04em;}
+  .sec-head .grow{flex:1;height:1px;background:var(--line);}
+
+  /* ---------- OVERVIEW STATS ---------- */
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:18px 16px;box-shadow:var(--shadow);}
+  .stat .k{font-size:12px;color:var(--ink-soft);letter-spacing:.14em;font-weight:500;}
+  .stat .v{font-family:"Noto Serif TC",serif;font-size:26px;font-weight:700;
+    color:var(--green);margin-top:3px;line-height:1.2;}
+  .stat .v small{font-size:15px;font-weight:500;color:var(--ink-soft);}
+
+  /* ---------- VEHICLE CARDS ---------- */
+  .veh{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:20px 18px;box-shadow:var(--shadow);margin-bottom:14px;}
+  .veh-top{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+  .veh-ic{font-size:26px;width:46px;height:46px;display:grid;place-items:center;
+    background:var(--green);border-radius:12px;}
+  .veh-top .t{font-family:"Noto Serif TC",serif;font-size:19px;font-weight:700;color:var(--green);}
+  .veh-top .t small{display:block;font-family:"Noto Sans TC";font-size:12px;
+    font-weight:400;color:var(--ink-soft);letter-spacing:.05em;}
+  .pick{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-top:1px dashed var(--line);}
+  .pick .time{font-family:"Noto Serif TC",serif;font-weight:700;color:var(--brick);
+    font-size:15px;min-width:48px;padding-top:1px;}
+  .pick .addr{flex:1;font-size:14.5px;}
+  .pick .addr b{font-weight:700;color:var(--ink);}
+  .pick .addr span{display:block;color:var(--ink-soft);font-size:13px;}
+  .navbtn{display:inline-flex;align-items:center;gap:4px;font-size:12.5px;
+    color:var(--brass-deep);text-decoration:none;font-weight:700;border:1px solid var(--brass);
+    padding:5px 10px;border-radius:20px;white-space:nowrap;transition:background .15s;}
+  .navbtn:active{background:rgba(255,138,99,.16);}
+  .meet{text-align:center;font-size:13.5px;color:var(--green);font-weight:500;
+    background:rgba(255,138,99,.15);border:1px dashed var(--brass);border-radius:12px;
+    padding:12px;margin-top:2px;}
+  .meet b{color:var(--brass-deep);}
+
+  /* ---------- DAY TIMELINE ---------- */
+  .dayband{background:var(--green);color:#eafafa;border-radius:16px;
+    padding:16px 20px;display:flex;align-items:center;justify-content:space-between;
+    margin-bottom:6px;}
+  .dayband .d{font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.3em;
+    color:var(--brass);font-weight:700;}
+  .dayband .dt{font-family:"Noto Serif TC",serif;font-size:22px;font-weight:700;}
+  .dayband .dt small{font-size:13px;font-weight:400;color:#bfe6e6;letter-spacing:.05em;}
+  .routebtn{display:block;text-align:center;margin:12px 0 20px;font-size:13.5px;
+    color:var(--brass-deep);font-weight:700;text-decoration:none;
+    border:1px solid var(--brass);border-radius:22px;padding:9px;background:var(--card);}
+  .routebtn:active{background:rgba(255,138,99,.16);}
+  .recbtn{display:block;text-align:center;margin:12px 0 2px;font-size:13.5px;font-weight:700;
+    color:#fff;text-decoration:none;background:var(--brass);border-radius:22px;padding:11px;
+    box-shadow:0 4px 12px rgba(217,84,47,.28);}
+  .recbtn:active{filter:brightness(.95);}
+
+  .tl{position:relative;padding-left:34px;}
+  .tl::before{content:"";position:absolute;left:9px;top:6px;bottom:14px;
+    width:2px;background:linear-gradient(var(--brass),var(--line));}
+  .stop{position:relative;margin-bottom:18px;}
+  .stop::before{content:"";position:absolute;left:-30px;top:6px;width:13px;height:13px;
+    border-radius:50%;background:var(--card);border:3px solid var(--brass);z-index:2;}
+  .stop.rest::before{background:var(--line);border-color:var(--ink-soft);width:11px;height:11px;top:7px;}
+  .stop.hotel::before{background:var(--brick);border-color:var(--brick);}
+  .time-badge{display:inline-block;font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:13.5px;color:var(--brick);letter-spacing:.02em;margin-bottom:5px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:15px 16px;box-shadow:var(--shadow);}
+  .card.plain{background:transparent;border:none;box-shadow:none;padding:4px 0;}
+  .card .nm{font-family:"Noto Serif TC",serif;font-size:18px;font-weight:700;
+    color:var(--green);display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .card .nm .tag{font-family:"Noto Sans TC";font-size:11px;font-weight:700;color:#fff;
+    background:var(--brass);padding:2px 9px;border-radius:12px;letter-spacing:.05em;white-space:nowrap;}
+  .card .nm .tag.meal{background:var(--brick);}
+  .card .desc{font-size:14px;color:var(--ink-soft);margin-top:7px;line-height:1.65;}
+  .card .note{font-size:12.5px;color:var(--brick);margin-top:7px;font-weight:500;}
+  .card .actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
+  .card.plain .nm{font-size:15px;color:var(--ink-soft);font-weight:500;font-family:"Noto Sans TC";}
+
+  /* ---------- EMERGENCY ---------- */
+  #contact{background:rgba(255,138,99,.10);}
+  .em-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+  .em{display:flex;align-items:center;gap:11px;background:var(--card);
+    border:1px solid var(--line);border-radius:13px;padding:13px 14px;
+    text-decoration:none;color:var(--ink);box-shadow:var(--shadow);transition:transform .1s;}
+  .em:active{transform:scale(.98);}
+  .em.full{grid-column:1 / -1;}
+  .em .ic{font-size:22px;}
+  .em .tx .l{font-size:12px;color:var(--ink-soft);letter-spacing:.05em;}
+  .em .tx .n{font-family:"Noto Serif TC",serif;font-weight:700;font-size:16px;color:var(--green);}
+  .em.sos .n{color:var(--brick);}
+  .fill{background:var(--card);border:1px solid var(--line);border-radius:13px;
+    padding:13px 15px;box-shadow:var(--shadow);}
+  .fill .l{font-size:12px;color:var(--ink-soft);}
+  .fill .blank{border-bottom:1.5px dotted var(--brass);height:22px;margin-top:4px;}
+
+  /* ---------- PRE-TRIP ---------- */
+  .checks{list-style:none;display:flex;flex-direction:column;gap:11px;}
+  .checks li{background:var(--card);border:1px solid var(--line);border-radius:13px;
+    padding:14px 16px;display:flex;gap:13px;box-shadow:var(--shadow);font-size:14px;line-height:1.6;}
+  .checks li .ck{color:var(--brass-deep);font-weight:900;font-size:17px;flex-shrink:0;
+    font-family:"Noto Serif TC",serif;}
+  .checks li b{color:var(--green);font-weight:700;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--green);color:#cfe9e8;text-align:center;
+    padding:34px 24px 40px;margin-top:34px;}
+  footer .fh{font-family:"Noto Serif TC",serif;font-size:20px;color:var(--brass);
+    font-weight:700;letter-spacing:.1em;margin-bottom:10px;}
+  footer p{font-size:12.5px;line-height:1.9;color:#b3dcd9;}
+
+  @media(max-width:380px){
+    .hero h1{font-size:64px;}
+    .stats{gap:9px;}
+    .em-grid{grid-template-columns:1fr;}
+  }
+  @media print{
+    .nav{display:none;} body{background:#fff;}
+    .card,.veh,.stat,.em,.checks li,.fill{box-shadow:none;}
+  }
+  /* ===== 放大字級（長輩友善）===== */
+  .hero h1{font-size:48px;line-height:1.16;letter-spacing:.05em;}
+  .chip{font-size:16px;}
+  .nav a{font-size:17px;}
+  .sec-head .num{font-size:17px;}
+  .sec-head h2{font-size:30px;}
+  .stat .k{font-size:15px;}
+  .stat .v small{font-size:17px;}
+  .veh-top .t{font-size:23px;}
+  .veh-top .t small{font-size:15px;}
+  .pick .time{font-size:18.5px;}
+  .pick .addr{font-size:18px;}
+  .pick .addr span{font-size:16.5px;}
+  .navbtn{font-size:16px;}
+  .meet{font-size:17px;}
+  .dayband .d{font-size:17px;}
+  .dayband .dt{font-size:26px;}
+  .dayband .dt small{font-size:16px;}
+  .routebtn{font-size:17px;}
+  .recbtn{font-size:17px;}
+  .time-badge{font-size:17px;}
+  .card .nm{font-size:22px;}
+  .card .nm .tag{font-size:14px;}
+  .card .desc{font-size:18.5px;line-height:1.75;}
+  .card .note{font-size:16px;}
+  .card.plain .nm{font-size:18.5px;}
+  .em .tx .l{font-size:15px;}
+  .em .tx .n{font-size:20px;}
+  .fill .l{font-size:15px;}
+  .checks li{font-size:18.5px;}
+  .checks li .ck{font-size:21px;}
+  footer .fh{font-size:24px;}
+  footer p{font-size:15.5px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="eyebrow">家族旅遊 · 兩天一夜</div>
+    <h1 class="serif">謝家台中𨑨迌團</h1>
+    <div class="rule"></div>
+    <div class="chips">
+      <span class="chip">🚌 大遊覽車</span>
+      <span class="chip">🚐 九人座</span>
+      <span class="chip">🏨 台中鳳凰酒店</span>
+      <span class="chip">📅 7/11–7/12（六・日）</span>
+    </div>
+  </header>
+
+  <!-- STICKY NAV -->
+  <nav class="nav">
+    <a href="#overview">總覽</a>
+    <a href="#day1">Day 1</a>
+    <a href="#day2">Day 2</a>
+    <a href="#contact">聯絡</a>
+    <a href="#tips">提醒</a>
+  </nav>
+
+  <!-- OVERVIEW -->
+  <section id="overview">
+    <div class="sec-head">
+      <span class="num serif">壹</span>
+      <h2>行程總覽</h2>
+      <span class="grow"></span>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="k">總人數</div><div class="v">47 <small>人</small></div></div>
+      <div class="stat"><div class="k">車輛</div><div class="v">2 <small>台</small></div></div>
+      <div class="stat"><div class="k">天數</div><div class="v">2 <small>天一夜</small></div></div>
+      <div class="stat"><div class="k">住宿</div><div class="v" style="font-size:22px;">台中鳳凰酒店</div></div>
+    </div>
+
+    <div style="height:26px"></div>
+
+    <!-- VEHICLES -->
+    <div class="sec-head">
+      <span class="num serif">貳</span>
+      <h2>集合與分車</h2>
+      <span class="grow"></span>
+    </div>
+
+    <div class="veh">
+      <div class="veh-top">
+        <div class="veh-ic">🚌</div>
+        <div class="t">大遊覽車<small>兩處上車</small></div>
+      </div>
+      <div class="pick">
+        <div class="time">07:15</div>
+        <div class="addr"><b>中和站</b><span>新北市中和區碧河里連城路 168 號</span><span>🚩 連城實和復健診所前</span></div>
+        <a class="navbtn" href="https://www.google.com/maps/search/?api=1&query=新北市中和區連城路168號" target="_blank">導航 ↗</a>
+      </div>
+      <div class="pick">
+        <div class="time">08:00</div>
+        <div class="addr"><b>蘆竹站</b><span>桃園市蘆竹區南崁里新南路一段 163 號</span></div>
+        <a class="navbtn" href="https://www.google.com/maps/search/?api=1&query=桃園市蘆竹區南崁新南路一段163號" target="_blank">導航 ↗</a>
+      </div>
+    </div>
+
+    <div class="veh">
+      <div class="veh-top">
+        <div class="veh-ic">🚐</div>
+        <div class="t">九人座<small>隨遊覽車同行</small></div>
+      </div>
+      <div class="pick">
+        <div class="time">08:00</div>
+        <div class="addr"><b>新竹新豐站</b><span>新竹縣新豐鄉中崙村中侖 11 鄰 165 號</span></div>
+        <a class="navbtn" href="https://www.google.com/maps/search/?api=1&query=新竹縣新豐鄉中崙村中侖165號" target="_blank">導航 ↗</a>
+      </div>
+    </div>
+
+    <div class="meet">🤝 兩車於 <b>10:00 彩虹眷村</b> 會合，之後全程一起行動</div>
+  </section>
+
+  <!-- DAY 1 -->
+  <section id="day1">
+    <div class="dayband">
+      <span class="d serif">DAY 1</span>
+      <div class="dt serif">第一天<small>　台中出發日</small></div>
+    </div>
+    <a class="routebtn" href="https://www.google.com/maps/dir/?api=1&origin=彩虹眷村&destination=台中鳳凰酒店&waypoints=屋馬燒肉中港店|台中國家歌劇院|帝國製糖廠台中營業所&travelmode=driving" target="_blank">🗺 查看 Day 1 路線地圖 ↗</a>
+
+    <div class="tl">
+      <div class="stop rest">
+        <div class="card plain"><div class="nm">☕ 途中休息站</div></div>
+      </div>
+
+      <div class="stop">
+        <span class="time-badge">10:00 – 11:00</span>
+        <div class="card">
+          <div class="nm">彩虹眷村 <span class="tag">打卡</span></div>
+          <div class="desc">由「彩虹爺爺」黃永阜一筆一畫彩繪的老眷村，繽紛童趣，是台中最好拍的地標之一。</div>
+          <div class="actions">
+            <a class="navbtn" href="https://www.google.com/maps/search/?api=1&query=彩虹眷村" target="_blank">導航 ↗</a>
+            <a class="navbtn" href="https://travelstay.org/2026/06/13/%E5%8F%B0%E4%B8%AD%E5%BD%A9%E8%99%B9%E7%9C%B7%E6%9D%91%E6%94%BB%E7%95%A5-2026%EF%BD%9C%E8%80%81%E5%85%B5%E7%88%BA%E7%88%BA%E7%9A%84%E5%82%B3%E5%A5%87%E5%A3%81%E7%95%AB%EF%BC%8C%E8%97%8F%E5%9C%A8/" target="_blank">📖 部落格攻略 ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="stop">
+        <span class="time-badge">11:30 – 13:30</span>
+        <div class="card">
+          <div class="nm">屋馬燒肉 中港店 <span class="tag meal">午餐</span></div>
+          <div class="desc">台中人氣燒肉名店，雞湯無限暢飲、服務貼心。就在新光三越／大遠百對面、鄰近歌劇院。台灣大道三段 300 號。</div>
+          <div class="actions">
+            <a class="navbtn" href="https://www.google.com/maps/search/?api=1&query=屋馬燒肉中港店" target="_blank">導航 ↗</a>
+            <a class="navbtn" href="tel:0423121000">☎ 撥打餐廳</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="stop">
+        <span class="time-badge">14:00 – 15:30</span>
+        <div class="card">
+          <div class="nm">台中國家歌劇院 <span class="tag">導覽</span></div>
+          <div class="desc">日本建築師伊東豊雄設計的「美聲涵洞」曲牆建築，世界罕見。含專人導覽 14:30 場次，請準時集合。</div>
+          <div class="actions"><a class="navbtn" href="https://www.google.com/maps/search/?api=1&query=臺中國家歌劇院" target="_blank">導航 ↗</a></div>
+        </div>
+      </div>
+
+      <div class="stop">
+        <span class="time-badge">16:30 – 17:30</span>
+        <div class="card">
+          <div class="nm">帝國糖廠生態園區</div>
+          <div class="desc">日治時期「帝國製糖廠台中營業所」，百年歷史建築＋湧泉公園生態湖與環湖步道，適合散步拍照。園區內設有「1935 Cafe &amp; Bar」，走累了可入內吹冷氣、避暑休憩。</div>
+          <div class="note">＊園區遮蔽少，記得備帽子、陽傘</div>
+          <div class="note" style="color:var(--green);">☂ 清涼／雨備方案：隔壁即 LaLaport 台中購物中心，室內有冷氣，太熱或下雨可改去逛。</div>
+          <div class="actions">
+            <a class="navbtn" href="https://www.google.com/maps/search/?api=1&query=帝國製糖廠台中營業所" target="_blank">導航 ↗</a>
+            <a class="navbtn" href="https://bobowin.blog/atsugar-studio/" target="_blank">📖 部落格攻略 ↗</a>
+            <a class="navbtn" href="https://maps.app.goo.gl/y8FR2171RtXVp4MK6" target="_blank">🛍 LaLaport（雨備）↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="stop hotel">
+        <span class="time-badge">18:00 – 18:30</span>
+        <div class="card">
+          <div class="nm">入住 台中鳳凰酒店 <span class="tag">住宿</span></div>
+          <div class="desc">座落台中市中區景緻最優美的柳川畔，共 260 間客房，以早午餐聞名——自助餐廳自上午 7:00 至下午 1:00 供應台、日、韓、南洋、西式等多國料理與星巴克咖啡。</div>
+          <div class="actions">
+            <a class="navbtn" href="https://www.google.com/maps/search/?api=1&query=台中鳳凰酒店" target="_blank">導航 ↗</a>
+            <a class="navbtn" href="tel:0437028555">☎ 撥打飯店</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="stop rest">
+        <div class="card plain"><div class="nm">🍽 晚餐分流（夜市 VS 江浙餐廳）</div></div>
+      </div>
+
+      <div class="stop">
+        <span class="time-badge">18:30 – 20:00</span>
+        <div class="card">
+          <div class="nm">一中街夜市 <span class="tag">自由分流</span></div>
+          <div class="desc">台中最熱鬧的學生商圈與夜市，小吃、購物一次滿足。自由活動時請約好回程時間與地點。</div>
+          <div class="note" style="color:var(--green);">🚌 遊覽車送去，自行返回（步行回飯店約 25 分鐘）· 💰 餐費自理</div>
+          <a class="recbtn" href="https://maps.app.goo.gl/Ly2EHFBNCbXTmfTs6" target="_blank">🍜 一中街必吃推薦清單（私房）↗</a>
+          <div class="actions"><a class="navbtn" href="https://www.google.com/maps/search/?api=1&query=一中街商圈" target="_blank">導航 ↗</a></div>
+        </div>
+      </div>
+
+      <div class="stop">
+        <span class="time-badge">18:30 – 20:00</span>
+        <div class="card">
+          <div class="nm">中華路夜市 <span class="tag">自由分流</span></div>
+          <div class="desc">台中老字號在地夜市，肉圓、麻薏、蜜豆冰、現烤燒物等傳統小吃雲集，古早味十足。自由活動請約好回程時間與地點。</div>
+          <div class="note" style="color:var(--green);">🚶 自行往返（步行約 8 分鐘）· 💰 餐費自理</div>
+          <a class="recbtn" href="https://maps.app.goo.gl/pz6DmVwh9A1MLRsV9" target="_blank">🍢 中華路夜市推薦清單（私房）↗</a>
+          <div class="actions">
+            <a class="navbtn" href="https://www.google.com/maps/search/?api=1&query=中華路夜市+台中" target="_blank">導航 ↗</a>
+            <a class="navbtn" href="https://margaret.tw/post-43823794/" target="_blank">📖 部落格攻略 ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="stop">
+        <span class="time-badge">19:15　已訂位</span>
+        <div class="card">
+          <div class="nm">沁園春 · 不逛夜市方案 <span class="tag meal">晚餐</span></div>
+          <div class="desc">創立 1949 年的江浙／上海菜老店，米其林必比登推薦，小籠包、無錫肉骨頭、排骨蛋飯必點。座位寬敞好入座、口味溫和大眾，想坐下來好好吃飯的人首選。台灣大道一段 129 號、近台中火車站。</div>
+          <div class="note" style="font-weight:700;">💵 只收現金：沁園春不收信用卡，請記得帶足現金！</div>
+          <div class="note">＊19:15 已訂位，請準時入座</div>
+          <div class="note" style="color:var(--green);">🚌 遊覽車送去，自行返回（步行回飯店約 13 分鐘）· 💰 餐費自理</div>
+          <div class="actions">
+            <a class="navbtn" href="https://www.google.com/maps/search/?api=1&query=沁園春+台中" target="_blank">導航 ↗</a>
+            <a class="navbtn" href="tel:0422200735">☎ 撥打餐廳</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="stop">
+        <span class="time-badge">餐後散步</span>
+        <div class="card">
+          <div class="nm">柳川水岸步道 <span class="tag">放鬆</span></div>
+          <div class="desc">就在飯店旁的柳川親水步道，整治後綠意與燈光相映，夜晚沿岸散步很放鬆，替今天畫下悠閒句點，再回房休息。</div>
+          <div class="actions"><a class="navbtn" href="https://www.google.com/maps/search/?api=1&query=柳川水岸步道" target="_blank">導航 ↗</a></div>
+        </div>
+      </div>
+
+      <div class="stop rest">
+        <div class="card plain"><div class="nm">🌙 返回飯店休息</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAY 2 -->
+  <section id="day2">
+    <div class="dayband">
+      <span class="d serif">DAY 2</span>
+      <div class="dt serif">第二天<small>　賦歸日</small></div>
+    </div>
+    <a class="routebtn" href="https://www.google.com/maps/dir/?api=1&origin=台中鳳凰酒店&destination=七彩雲南龍潭店&waypoints=國立自然科學博物館|宮原眼科&travelmode=driving" target="_blank">🗺 查看 Day 2 路線地圖 ↗</a>
+
+    <div class="tl">
+      <div class="stop">
+        <span class="time-badge">07:00 – 10:30</span>
+        <div class="card">
+          <div class="nm">飯店早午餐 ＋ 設施</div>
+          <div class="desc">飯店自助餐廳的多國料理早午餐——台、日、韓、南洋、西式任你選，還有星巴克咖啡，供應至下午 1:00。本團 10:30 出發，記得留時間收拾行李。</div>
+        </div>
+      </div>
+
+      <div class="stop rest">
+        <div class="card plain"><div class="nm">🚌 10:30　飯店出發</div></div>
+      </div>
+
+      <div class="stop">
+        <span class="time-badge">11:00 – 13:00</span>
+        <div class="card">
+          <div class="nm">國立自然科學博物館</div>
+          <div class="desc">台灣重量級博物館，恐龍廳、太空劇場、生命科學廳寓教於樂，大人小孩都適合。</div>
+          <div class="note" style="color:var(--green);">🎧 使用「行動導覽」App 建議自備耳機，聆聽解說更清楚方便。</div>
+          <div class="actions">
+            <a class="navbtn" href="https://www.google.com/maps/search/?api=1&query=國立自然科學博物館" target="_blank">導航 ↗</a>
+            <a class="navbtn" href="https://www.nmns.edu.tw/ch/" target="_blank">🌐 官網 ↗</a>
+            <a class="navbtn" href="https://www.nmns.edu.tw/ch/exhibitions/special-exhibitions/" target="_blank">🎫 當期展覽 ↗</a>
+            <a class="navbtn" href="https://www.nmns.edu.tw/ch/exhibitions/galleries/floor/1f/" target="_blank">🗺 樓層設施 ↗</a>
+            <a class="navbtn" href="https://www.nmns.edu.tw/ch/learn/emuseum/mobile/icobo/" target="_blank">📱 行動導覽 ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="stop">
+        <span class="time-badge">13:30 – 14:30</span>
+        <div class="card">
+          <div class="nm">科博館內簡餐 <span class="tag meal">午餐</span></div>
+          <div class="desc">於博物館內用餐，接續下午行程。</div>
+        </div>
+      </div>
+
+      <div class="stop">
+        <span class="time-badge">15:00 – 16:00</span>
+        <div class="card">
+          <div class="nm">宮原眼科 <span class="tag">伴手禮</span></div>
+          <div class="desc">日治時期眼科診所改建的名店，紅磚挑高、華麗書牆，冰淇淋與鳳梨酥都是必買。</div>
+          <div class="actions">
+            <a class="navbtn" href="https://www.google.com/maps/search/?api=1&query=宮原眼科" target="_blank">導航 ↗</a>
+            <a class="navbtn" href="https://travel.taichung.gov.tw/zh-tw/attractions/intro/793" target="_blank">🌐 景點介紹 ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="stop">
+        <span class="time-badge">17:30</span>
+        <div class="card">
+          <div class="nm">七彩雲南 龍潭店 <span class="tag meal">晚餐</span></div>
+          <div class="desc">滇緬雲南料理，檸檬魚、月亮蝦餅、椒麻雞為招牌。玻璃屋建築、附停車場，適合大家族聚餐。</div>
+          <div class="actions">
+            <a class="navbtn" href="https://www.google.com/maps/search/?api=1&query=七彩雲南龍潭店" target="_blank">導航 ↗</a>
+            <a class="navbtn" href="tel:034709338">☎ 撥打餐廳</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="stop hotel">
+        <span class="time-badge">賦歸</span>
+        <div class="card">
+          <div class="nm">平安返家</div>
+          <div class="desc"><b>🚌 大遊覽車：</b>返回桃園蘆竹 → 中和<br><b>🚐 九人座：</b>返回新竹新豐（中崙村中侖 165 號）</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMERGENCY -->
+  <section id="contact">
+    <div class="sec-head">
+      <span class="num serif">參</span>
+      <h2>緊急聯絡</h2>
+      <span class="grow"></span>
+    </div>
+    <div class="em-grid">
+      <a class="em sos" href="tel:119"><span class="ic">🚑</span><span class="tx"><span class="l">救護 / 消防</span><span class="n">119</span></span></a>
+      <a class="em sos" href="tel:110"><span class="ic">🚓</span><span class="tx"><span class="l">報案</span><span class="n">110</span></span></a>
+      <a class="em" href="tel:112"><span class="ic">📱</span><span class="tx"><span class="l">手機急難</span><span class="n">112</span></span></a>
+      <a class="em" href="tel:0975012257"><span class="ic">👤</span><span class="tx"><span class="l">主辦人 林芷蔚</span><span class="n" style="font-size:19px;">0975-012-257</span></span></a>
+      <a class="em" href="tel:0437028555"><span class="ic">🏨</span><span class="tx"><span class="l">台中鳳凰酒店</span><span class="n">04-3702-8555</span></span></a>
+      <a class="em" href="tel:034709338"><span class="ic">🍽</span><span class="tx"><span class="l">七彩雲南龍潭店</span><span class="n">03-470-9338</span></span></a>
+      <div class="em full"><span class="ic">🏥</span><span class="tx"><span class="l">最近醫院</span><span class="n" style="font-size:17.5px;">衛福部台中醫院 · 飯店正對面，急症可直接前往</span></span></div>
+    </div>
+
+    <div style="height:14px"></div>
+    <div class="em-grid">
+      <div class="fill"><div class="l">🚌 大遊覽車司機</div><div class="blank"></div></div>
+      <div class="fill"><div class="l">🚐 九人座司機</div><div class="blank"></div></div>
+      <div class="fill" style="grid-column:1 / -1;"><div class="l">🏨 房號 / 分組</div><div class="blank"></div></div>
+    </div>
+  </section>
+
+  <!-- PRE-TRIP TIPS -->
+  <section id="tips">
+    <div class="sec-head">
+      <span class="num serif">肆</span>
+      <h2>行前提醒</h2>
+      <span class="grow"></span>
+    </div>
+    <ul class="checks">
+      <li><span class="ck">✓</span><div><b>準時集合</b>：中和第一站 07:15，請提前 10 分鐘到；蘆竹、新豐 08:00。</div></li>
+      <li><span class="ck">✓</span><div><b>隨身必備</b>：健保卡、常用藥、防曬、雨具、行動電源、環保杯、耳機（科博館行動導覽用）。</div></li>
+      <li><span class="ck">✓</span><div><b>長輩與孩童</b>：糖廠園區、科博館步行較多，穿好走的鞋；園區遮蔽少，備帽子陽傘。</div></li>
+      <li><span class="ck">✓</span><div><b>歌劇院導覽</b>：14:30 專人導覽場次請準時到齊，勿走散。</div></li>
+      <li><span class="ck">✓</span><div><b>飯店資訊</b>：入住 15:00 / 退房 11:00；自助早午餐供應至下午 1:00（本團 10:30 出發）。停車為特約「城市車旅」（民權路 164 號）。</div></li>
+      <li><span class="ck">✓</span><div><b>自由分流</b>：一中街夜市自由活動，務必約好回車時間與地點，手機保持暢通。</div></li>
+    </ul>
+  </section>
+
+  <footer>
+    <div class="fh serif">祝旅途平安愉快</div>
+    <p>
+      本手冊可加入書籤或分享給家人 · 隨時查看行程與導航<br>
+      餐廳訂位、營業時間與景點資訊如有異動，以現場公告為準
+    </p>
+  </footer>
+
+</div>
+</body>
+</html>
